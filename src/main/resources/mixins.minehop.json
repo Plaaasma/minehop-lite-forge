@@ -3,7 +3,9 @@
   "minVersion": "0.8",
   "package": "net.nerdorg.minehop.client.mixin",
   "refmap": "mixins.minehop.refmap.json",
-  "mixins": [],
+  "mixins": [
+    "LivingEntityMixin"
+  ],
   "client": [
     "LivingEntityMixin"
   ],

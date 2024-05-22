@@ -59,11 +59,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract void calculateEntityAnimation(boolean p_268129_);
 
-    @Inject(method = "isPushable", at = @At("HEAD"), cancellable = true)
-    public void isPushable(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(false);
-    }
-
     @Inject(method = "travel", at = @At("HEAD"), cancellable = true)
     public void travel(Vec3 movementInput, CallbackInfo ci) {
         if (!MinehopConfig.enabled) { return; }

@@ -21,6 +21,10 @@ public class MinehopConfig {
             .comment("Movement master switch.")
             .define("enabled", true);
 
+    private static final ForgeConfigSpec.BooleanValue FALL_DAMAGE = BUILDER
+            .comment("Enable Fall Damage.")
+            .define("fall_damage", true);
+
     private static final ForgeConfigSpec.BooleanValue SHOW_SSJ = BUILDER
             .comment("Show your SSJ (the white numbers) under your crosshair.")
             .define("showSSJ", true);
@@ -61,6 +65,7 @@ public class MinehopConfig {
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean enabled = true;
+    public static boolean fall_damage = true;
     public static boolean show_ssj = true;
     public static boolean show_efficiency = true;
     public static boolean show_current_speed = true;
@@ -75,6 +80,7 @@ public class MinehopConfig {
     static void onLoad(final ModConfigEvent event)
     {
         enabled = ENABLED.get();
+        fall_damage = FALL_DAMAGE.get();
         show_ssj = SHOW_SSJ.get();
         show_efficiency = SHOW_EFFICIENCY.get();
         show_current_speed = SHOW_SPEED.get();

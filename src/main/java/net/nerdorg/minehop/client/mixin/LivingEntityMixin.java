@@ -151,7 +151,7 @@ public abstract class LivingEntityMixin extends Entity {
                 boolean flag = false;
                 float f1 = 0.0F;
                 if (amount > 0.0F && this.isDamageSourceBlocked(source)) {
-                    var ev = net.minecraftforge.event.ForgeEventFactory.onShieldBlock(self, source, amount);
+                    net.minecraftforge.event.entity.living.ShieldBlockEvent ev = net.minecraftforge.common.ForgeHooks.onShieldBlock(self, source, amount);
                     if (!ev.isCanceled()) {
                         if (ev.shieldTakesDamage()) this.hurtCurrentlyUsedShield(amount);
                         f1 = ev.getBlockedDamage();
@@ -235,7 +235,7 @@ public abstract class LivingEntityMixin extends Entity {
                         }
                     }
 
-                    if (entity1 != null && !source.is(DamageTypeTags.NO_KNOCKBACK)) {
+                    if (entity1 != null && !source.is(DamageTypeTags.IS_EXPLOSION)) {
                         double d0 = entity1.getX() - this.getX();
 
                         double d1;
@@ -364,7 +364,7 @@ public abstract class LivingEntityMixin extends Entity {
             yawDifference = yawDifference * -1;
         }
 
-        if (!fullGrounded) {
+        if (!fullGrounded && !this.onClimbable()) {
             sI = sI * yawDifference;
             fI = fI * yawDifference;
         }
